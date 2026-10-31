@@ -1,0 +1,2 @@
+import { ButtonLink, Eyebrow } from '@/components/ui';
+export default function NotFound(){return <section className="container not-found"><Eyebrow>404 / AN UNEXPECTED DETOUR</Eyebrow><h1 className="display">EVEN THE BEST DRIVES<br/><span>TAKE A WRONG TURN.</span></h1><p>Let’s get you back to something worth discovering.</p><ButtonLink href="/inventory">Back to the collection</ButtonLink></section>}

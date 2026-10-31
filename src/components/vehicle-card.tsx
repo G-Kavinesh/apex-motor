@@ -1,0 +1,8 @@
+'use client';
+import Link from 'next/link';
+import { type Vehicle, money } from '@/lib/vehicles';
+import { CarImage } from './car-image';
+import { Heart, ArrowUpRight } from './icon';
+import { useShowroom } from './providers';
+export function SaveButton({ slug, className = '' }: { slug: string; className?: string }) { const { saved, toggleSaved } = useShowroom(); const active = saved.includes(slug); return <button className={`save-button ${active ? 'is-saved' : ''} ${className}`} aria-label={active ? 'Remove from shortlist' : 'Save to shortlist'} aria-pressed={active} onClick={() => toggleSaved(slug)}><Heart size={17} fill={active ? 'currentColor' : 'none'}/></button>; }
+export function VehicleCard({ vehicle: v, index = 0 }: { vehicle: Vehicle; index?: number }) { return <article className="vehicle-card"><div className="vehicle-photo"><Link href={`/inventory/${v.slug}`} aria-label={`Discover ${v.make} ${v.model}`}><CarImage image={v.image} alt={`${v.make} ${v.model} — editorial photography`} width={1000}/></Link><span className="vehicle-badge">{v.badge}</span><SaveButton slug={v.slug}/><span className="vehicle-number">{String(index + 1).padStart(2,'0')}</span></div><div className="vehicle-card-info"><div className="vehicle-make">{v.make}</div><Link href={`/inventory/${v.slug}`}><h3>{v.model}</h3></Link><p className="vehicle-edition">{v.edition}</p><div className="vehicle-meta"><span>{v.year}</span><span>{v.mileage.toLocaleString('en-US')} mi</span><span>{v.fuel}</span></div><div className="vehicle-card-bottom"><span>{money(v.price)}<small>Illustrative asking price</small></span><Link className="circle-link" href={`/inventory/${v.slug}`} aria-label={`View ${v.make} ${v.model}`}><ArrowUpRight size={19}/></Link></div></div></article>; }

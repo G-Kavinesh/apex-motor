@@ -1,0 +1,9 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readdir, readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
+const output=path.resolve('out');
+async function htmlFiles(directory){const entries=await readdir(directory,{withFileTypes:true});const parts=await Promise.all(entries.map(async entry=>entry.isDirectory()?htmlFiles(path.join(directory,entry.name)):entry.name.endsWith('.html')?[path.join(directory,entry.name)]:[]));return parts.flat();}
+let built=true;try{await stat(output)}catch{built=false}
+test('static export has every showroom page and six vehicle routes',{skip:!built},async()=>{const main=['','inventory','showroom','ownership','sell','journal','contact','shortlist','studio','privacy'];for(const route of main)assert.ok((await stat(path.join(output,route,'index.html'))).isFile(),route);const vehicleDirs=await readdir(path.join(output,'inventory'),{withFileTypes:true});assert.equal(vehicleDirs.filter(e=>e.isDirectory()).length,6);const journalDirs=await readdir(path.join(output,'journal'),{withFileTypes:true});assert.equal(journalDirs.filter(e=>e.isDirectory()).length,3);});
+test('all exported pages have one primary heading and valid local navigation',{skip:!built},async()=>{for(const file of await htmlFiles(output)){const html=await readFile(file,'utf8');assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1,`${file} must have exactly one H1`);const links=[...html.matchAll(/href="([^"#]*)"/g)].map(m=>m[1].replaceAll('&amp;','&'));for(const link of links){if(!link.startsWith('/')||link.startsWith('//'))continue;const pathname=decodeURIComponent(link.split(/[?#]/)[0]);const target=path.join(output,pathname);let exists=false;for(const candidate of [target,path.join(target,'index.html')]){try{if((await stat(candidate)).isFile()){exists=true;break}}catch{}}assert.ok(exists,`${file} has a broken link to ${link}`);}}});

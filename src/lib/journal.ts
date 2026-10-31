@@ -1,0 +1,17 @@
+export const articles = [
+  { slug: 'the-art-of-the-long-way-home', category: 'DRIVE CULTURE', title: 'The art of the long way home.', excerpt: 'No destination. No deadline. Just a good car and a road worth remembering.', image: 'photo-1503376780353-7e6692767b70', read: '4 MIN READ', sections: [
+    { title: 'An invitation to slow down.', text: 'The best journeys rarely begin with a precise arrival time. They begin with a little curiosity: a turn you have never taken, an early morning, an excuse to put the phone away. A car can be a practical object. It can also be an invitation to pay attention.' },
+    { title: 'Choose the road, then the playlist.', text: 'Look for a route that gives you room to enjoy the surroundings. A quieter coastal road, a familiar hill at a different hour, a small town with a good place to stop. Give yourself enough time to take a break, explore on foot, and change your plans.' },
+    { title: 'A ritual worth keeping.', text: 'Make it small enough to repeat. An hour on a Sunday morning can be enough. Check the weather, make sure the car is ready, and drive with care for the people and places around you. The point is the experience, not the distance.' },
+  ] },
+  { slug: 'your-first-electric-chapter', category: 'OWNERSHIP NOTES', title: 'Your first electric chapter.', excerpt: 'The questions to ask before finding your rhythm with an electric car.', image: 'photo-1611859266238-4b98091d9d9b', read: '5 MIN READ', sections: [
+    { title: 'Start with your real week.', text: 'Before getting lost in specifications, write down the journeys you actually make. Your commute, a regular weekend trip, and the occasional longer drive tell a more useful story than a single number on a brochure.' },
+    { title: 'Make charging part of the conversation.', text: 'Ask the showroom to walk you through the car’s charging connections and show you the supplied cables. Discuss where you expect to charge and what information you need from your home, building, or charging provider before making a decision.' },
+    { title: 'Take your time in the driver’s seat.', text: 'A viewing is the moment to explore the controls, seating, visibility, and luggage space. Ask for a demonstration of the charging interface and available vehicle history. Compare what you learn against your everyday needs.' },
+  ] },
+  { slug: 'what-to-look-for-in-a-viewing', category: 'THE BUYER’S EDIT', title: 'Beyond the first impression.', excerpt: 'A considered approach to choosing a car you will love living with.', image: 'photo-1503736334956-4c8f8e92946d', read: '3 MIN READ', sections: [
+    { title: 'Bring your everyday with you.', text: 'It is easy to focus on how a car looks from the outside. Take a moment to imagine a normal Tuesday. Try the seating position, open the luggage compartment, and make sure the cabin works for the people and things you travel with.' },
+    { title: 'Ask to see the story.', text: 'Ask which documents are available for the specific vehicle, what has been checked, and which items still need confirmation. Take notes so you can compare cars without relying on memory. A good conversation should leave you with clearer questions and useful answers.' },
+    { title: 'Give the decision some room.', text: 'If something needs a second look, ask for it. If a specification or a price needs explaining, ask for a written breakdown. The right car is a decision you can feel comfortable with after the excitement of the first viewing.' },
+  ] },
+];

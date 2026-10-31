@@ -1,0 +1,9 @@
+import Link from 'next/link';
+import { ArrowUpRight, ArrowRight } from './icon';
+import type { ReactNode } from 'react';
+export function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) { return <div className={`eyebrow ${light ? 'eyebrow-light' : ''}`}><span/>{children}</div>; }
+export function ButtonLink({ href, children, variant = 'dark', className = '' }: { href: string; children: ReactNode; variant?: 'dark' | 'accent' | 'outline' | 'light'; className?: string }) { return <Link href={href} className={`button button-${variant} ${className}`}>{children}<ArrowUpRight size={19}/></Link>; }
+export function TextLink({ href, children }: { href: string; children: ReactNode }) { return <Link className="text-link" href={href}>{children}<ArrowRight size={17}/></Link>; }
+export function PageIntro({ number, label, title, accent, children }: { number: string; label: string; title: string; accent: string; children?: ReactNode }) { return <section className="page-intro container"><Eyebrow>{label} / {number}</Eyebrow><div className="page-intro-row"><h1 className="display">{title}<br/><span>{accent}</span></h1>{children && <div className="intro-copy">{children}</div>}</div></section>; }
+export function ContactBand({ title = 'FEEL IT FOR YOURSELF.', text = 'Some things make more sense from the driver’s seat.' }: { title?: string; text?: string }) { return <section className="contact-band"><div className="container"><div><Eyebrow>YOUR NEXT CHAPTER STARTS HERE</Eyebrow><h2 className="display">{title}</h2><p>{text}</p></div><ButtonLink href="/contact">Arrange a private viewing</ButtonLink></div></section>; }
+export function DemoNote({ children }: { children?: ReactNode }) { return <p className="demo-note">{children || 'Curated demo inventory. Photography is editorial; vehicle details and prices are illustrative and require dealer confirmation.'}</p>; }
